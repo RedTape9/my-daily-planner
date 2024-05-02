@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="mt-5">
+{{form_start(form)}}
+<div class="form-group">
+    {{form_label(form.task)}}
+    {{form_widget(form.task)}}
+</div>
+<div class="form-group">
+    {{form_label(form.description)}}
+    {{form_widget(form.description)}}
+</div>
+<div class="form-group">
+    {{form_widget(form.submit)}}
+</div>
+{{form_end(form)}}
+{% endblock %}
+
