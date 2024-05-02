@@ -36,7 +36,7 @@ class MainController extends AbstractController
         }
 
 
-        return $this->render('main/addTask.html.twig', [
+        return $this->render('main/add-task.html.twig', [
             'form' => $form->createView()
         ]);
     }
