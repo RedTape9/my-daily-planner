@@ -1,11 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}Task List{% endblock %}
 
 {% block body %}
-<div class="row justify-content-center">
-    <div class="col-12">
-        <h1 class="text-primary text-center">My Daily Planner</h1>
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
     </div>
-</div>
+{% endfor %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Task</th>
+      <th scope="col">Discription</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for post in posts %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ post.task }}</td>
+      <td><a href="" class="btn btn-success">Edit</a></td>
+      <td><a href="" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
 {% endblock %}

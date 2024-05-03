@@ -12,11 +12,18 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class MainController extends AbstractController
 {
+    private $em;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
     #[Route('/main', name: 'app_main')]
     public function index(): Response
     {
+        $posts = $this->em->getRepository(Post::class)->findAll();
         return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
+            'posts' => $posts,
         ]);
     }
 
@@ -31,6 +38,7 @@ class MainController extends AbstractController
             $em->persist($post);
             $em->flush();
 
+            $this->addFlash('success', 'Task Added Successfully');
 
             return $this->redirectToRoute('app_main');
         }
