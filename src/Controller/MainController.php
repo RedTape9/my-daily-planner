@@ -66,4 +66,14 @@ class MainController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+    
+    #[Route('delete-task/{id}', name: 'delete-task')]
+    public function deleteTask($id)
+    {
+        $post = $this->em->getRepository(Post::class)->find($id);
+        $this->em->remove($post);
+        $this->em->flush();
+        $this->addFlash('success', 'Task Deleted Successfully');
+        return $this->redirectToRoute('app_main');
+    }
 }

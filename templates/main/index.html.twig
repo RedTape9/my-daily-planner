@@ -25,7 +25,7 @@
         <td>{{ post.description }}</td>
         <td>
             <a href="{{ path('edit-task', {id: post.id}) }}" class="btn btn-success btn-sm mr-2">Edit</a>
-            <a href="" class="btn btn-danger btn-sm">Delete</a>
+            <a href="{{ path('delete-task', {id: post.id}) }}" class="btn btn-danger btn-sm">Delete</a>
         </td>
     </tr>
     </tr>
