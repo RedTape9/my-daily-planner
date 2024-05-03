@@ -4,7 +4,7 @@
 
 {% block body %}
 {% for message in app.flashes('success') %}
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success mt-3" role="alert">
         {{ message }}
     </div>
 {% endfor %}
@@ -13,16 +13,21 @@
     <tr>
       <th scope="col">Nr.</th>
       <th scope="col">Task</th>
-      <th scope="col">Discription</th>
+      <th scope="col">Description</th>
+    <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
     {% for post in posts %}
     <tr>
-      <th scope="row">{{ loop.index }}</th>
-      <td>{{ post.task }}</td>
-      <td><a href="{{ path('edit-task', {id: post.id})}}" class="btn btn-success">Edit</a></td>
-      <td><a href="" class="btn btn-danger">Delete</a></td>
+        <th scope="row">{{ loop.index }}</th>
+        <td>{{ post.task }}</td>
+        <td>{{ post.description }}</td>
+        <td>
+            <a href="{{ path('edit-task', {id: post.id}) }}" class="btn btn-success btn-sm mr-2">Edit</a>
+            <a href="" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+    </tr>
     </tr>
     {% endfor %}
 

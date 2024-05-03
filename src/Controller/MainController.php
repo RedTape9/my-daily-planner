@@ -50,25 +50,19 @@ class MainController extends AbstractController
     }
 
     #[Route('edit-task/{id}', name: 'edit-task')]
-    public function editTask(Request $request, $id): Response
+    public function editTask(Request $request, $id)
     {
         $post = $this->em->getRepository(Post::class)->find($id);
-
-        if (!$post) {
-            $this->addFlash('error', 'Task not found.');
-            return $this->redirectToRoute('app_main');
-        }
-
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($post);
             $this->em->flush();
             $this->addFlash('success', 'Task Updated Successfully');
             return $this->redirectToRoute('app_main');
         }
 
-        return $this->render('main/edit-task.html.twig', [
+        return $this->render('main/add-task.html.twig', [
             'form' => $form->createView()
         ]);
     }
