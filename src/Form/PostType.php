@@ -23,10 +23,6 @@ class PostType extends AbstractType
                 'label' => 'Description',
                 'attr' => ['class' => 'form-control', 'placeholder' => 'Enter Description']
             ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Add Task',
-                'attr' => ['class' => 'btn btn-primary mt-3']
-            ])
         ;
     }
 
