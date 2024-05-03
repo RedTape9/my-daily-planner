@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if post is not defined %}
+        <p>Task not found.</p>
+    {% else %}
+        <h1>Edit Task</h1>
+        <form action="{{ path('edit-task', {id: post.id}) }}" method="post">
+            {{ form_row(form.task) }}
+            {% if form.description is defined %}  {{ form_row(form.description) }}
+            {% endif %}
+            <button type="submit">Update Task</button>
+        </form>
+    {% endif %}
+{% endblock %}

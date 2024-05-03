@@ -11,7 +11,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Nr.</th>
       <th scope="col">Task</th>
       <th scope="col">Discription</th>
     </tr>
@@ -21,7 +21,7 @@
     <tr>
       <th scope="row">{{ loop.index }}</th>
       <td>{{ post.task }}</td>
-      <td><a href="" class="btn btn-success">Edit</a></td>
+      <td><a href="{{ path('edit-task', {id: post.id})}}" class="btn btn-success">Edit</a></td>
       <td><a href="" class="btn btn-danger">Delete</a></td>
     </tr>
     {% endfor %}
